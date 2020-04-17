@@ -148,6 +148,7 @@ workflows:
             <<: *FILTERS
           requires:
             - test
+            - lint
       - delivery:
           filters:
             <<: *FILTERS
