@@ -43,7 +43,7 @@ jobs:
   # Runs Go linters
   lint:
    executor: ritchie-executor
-    steps:
+   steps:
       - checkout
       - run:
           name: Install golangci-lint
