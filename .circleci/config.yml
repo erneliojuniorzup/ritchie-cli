@@ -58,14 +58,6 @@ jobs:
           name: lint
           command: &lintcmd |
             golangci-lint run --build-tags="$GOTAGS" -v --concurrency 2
-      - run:
-          name: lint api
-          working_directory: api
-          command: *lintcmd
-      - run:
-          name: lint sdk
-          working_directory: sdk
-          command: *lintcmd
   test:
     executor: ritchie-executor
     environment:
@@ -148,6 +140,9 @@ jobs:
 workflows:
   build_and_test:
     jobs:
+      - lint: 
+          filters:
+            <<: *FILTERS
       - test:
           filters:
             <<: *FILTERS
