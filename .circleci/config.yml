@@ -42,10 +42,7 @@ executors:
 jobs:
   # Runs Go linters
   lint:
-    docker:
-      - image: *GOLANG_IMAGE
-    environment:
-      GOTAGS: "" # No tags for OSS but there are for enterprise
+   executor: ritchie-executor
     steps:
       - checkout
       - run:
@@ -57,7 +54,7 @@ jobs:
       - run:
           name: lint
           command: &lintcmd |
-            golangci-lint run --build-tags="$GOTAGS" -v --concurrency 2
+            golangci-lint run -v --concurrency 2
   test:
     executor: ritchie-executor
     environment:
