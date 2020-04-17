@@ -149,6 +149,7 @@ workflows:
   build_and_test:
     jobs:
       - test:
+          lint:
           filters:
             <<: *FILTERS
       - build:
