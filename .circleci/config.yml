@@ -54,7 +54,8 @@ jobs:
       - run:
           name: lint
           command: &lintcmd |
-            /go/bin/golangci-lint run -v --concurrency 2
+            ls
+            /go/bin/golangci-lint run
   test:
     executor: ritchie-executor
     environment:
